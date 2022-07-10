@@ -7,6 +7,7 @@ typedef char bool;
 
 #define TRUE 1
 #define FALSE 0
+#define max(a, b) ((a) > (b) ? (a) : (b))
 
 void *checked_malloc(int);
 string String(char *);
