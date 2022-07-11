@@ -1,5 +1,6 @@
-#ifndef TIGER_UTIL_H
-#define TIGER_UTIL_H
+#ifndef TIGER_CHAP2_UTIL_H
+#define TIGER_CHAP2_UTIL_H
+
 #include <assert.h>
 
 typedef char *string;
