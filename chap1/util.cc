@@ -1,20 +1,12 @@
-/*
- * util.c - commonly used utility functions.
- */
-
 #include "util.h"
-#include <string>
-void *checked_malloc(int len) {
-  void *p = malloc(len);
-  if (!p) {
-    fprintf(stderr, "\nRan out of memory!\n");
-    exit(1);
-  }
-  return p;
-}
+#include <iostream>
 
-std::string String(char *s) {
-  std::string p = std::string(s);
+void *checked_malloc(int len) {
+  auto *p = std::malloc(len);
+  if (!p) {
+    std::cerr << "\nRan out of memory!\n";
+    std::exit(1);
+  }
   return p;
 }
 

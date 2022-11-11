@@ -1,6 +1,7 @@
 #pragma once
 
 #include "util.h"
+#include <string>
 
 typedef struct A_stm_ *A_stm;
 typedef struct A_exp_ *A_exp;
@@ -33,7 +34,7 @@ struct A_exp_ {
     int num;
     struct {
       A_exp left;
-      A_binop oper;
+      A_binop op;
       A_exp right;
     } op;
     struct {
@@ -44,7 +45,7 @@ struct A_exp_ {
 };
 A_exp A_IdExp(std::string id);
 A_exp A_NumExp(int num);
-A_exp A_OpExp(A_exp left, A_binop oper, A_exp right);
+A_exp A_OpExp(A_exp left, A_binop op, A_exp right);
 A_exp A_EseqExp(A_stm stm, A_exp exp);
 
 struct A_expList_ {

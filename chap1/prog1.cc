@@ -1,6 +1,6 @@
 #include "prog1.h"
 
-A_stm prog(void) {
+A_stm prog() {
   /*
    * Testcase:
    *    a := 5 + 3;
@@ -27,13 +27,13 @@ int maxExpPrintArgs(A_exp exp) {
     case A_exp_::A_opExp: {
       int leftNum = maxExpPrintArgs(exp->u.op.left);
       int rightNum = maxExpPrintArgs(exp->u.op.right);
-      res = max(leftNum, rightNum);
+      res = std::max(leftNum, rightNum);
       break;
     }
     case A_exp_::A_eseqExp: {
       int stmNum = maxStmPrintArgs(exp->u.eseq.stm);
       int expNum = maxExpPrintArgs(exp->u.eseq.exp);
-      res = max(stmNum, expNum);
+      res = std::max(stmNum, expNum);
       break;
     }
     default:
@@ -48,7 +48,7 @@ int maxStmPrintArgs(A_stm stm) {
     case A_stm_::A_compoundStm: {
       int stm1 = maxStmPrintArgs(stm->u.compound.stm1);
       int stm2 = maxStmPrintArgs(stm->u.compound.stm2);
-      res = max(stm1, stm2);
+      res = std::max(stm1, stm2);
       break;
     }
     case A_stm_::A_assignStm: {
