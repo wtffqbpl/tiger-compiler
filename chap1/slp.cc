@@ -11,10 +11,10 @@ A_stm A_CompoundStm(A_stm stm1, A_stm stm2) {
   return s;
 }
 
-A_stm A_AssignStm(std::string id, A_exp exp) {
+A_stm A_AssignStm(const std::string &id, A_exp exp) {
   auto s = static_cast<A_stm>(checked_malloc(sizeof(A_stm_)));
   s->kind = A_stm_::A_assignStm;
-  s->u.assign.id = std::move(id);
+  s->u.assign.id = id;
   s->u.assign.exp = exp;
   return s;
 }
@@ -26,10 +26,10 @@ A_stm A_PrintStm(A_expList exps) {
   return s;
 }
 
-A_exp A_IdExp(std::string id) {
+A_exp A_IdExp(const std::string &id) {
   auto e = static_cast<A_exp>(checked_malloc(sizeof(A_exp_)));
   e->kind = A_exp_::A_idExp;
-  e->u.id = std::move(id);
+  e->u.id = id;
   return e;
 }
 

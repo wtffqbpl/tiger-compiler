@@ -24,7 +24,7 @@ struct A_stm_ {
   } u;
 };
 A_stm A_CompoundStm(A_stm stm1, A_stm stm2);
-A_stm A_AssignStm(std::string id, A_exp exp);
+A_stm A_AssignStm(const std::string &id, A_exp exp);
 A_stm A_PrintStm(A_expList exps);
 
 struct A_exp_ {
@@ -43,7 +43,7 @@ struct A_exp_ {
     } eseq;
   } u;
 };
-A_exp A_IdExp(std::string id);
+A_exp A_IdExp(const std::string &id);
 A_exp A_NumExp(int num);
 A_exp A_OpExp(A_exp left, A_binop op, A_exp right);
 A_exp A_EseqExp(A_stm stm, A_exp exp);
