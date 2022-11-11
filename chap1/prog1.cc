@@ -7,16 +7,15 @@ A_stm prog() {
    *    b := (print(a , a - 1), 10 * a);
    *    print (b)
    */
-  return A_CompoundStm(
-      A_AssignStm("a", A_OpExp(A_NumExp(5), A_plus, A_NumExp(3))),
-      A_CompoundStm(
-          A_AssignStm("b",
-                      A_EseqExp(A_PrintStm(A_PairExpList(
-                                    A_IdExp("a"),
-                                    A_LastExpList(A_OpExp(A_IdExp("a"), A_minus,
-                                                          A_NumExp(1))))),
-                                A_OpExp(A_NumExp(10), A_times, A_IdExp("a")))),
-          A_PrintStm(A_LastExpList(A_IdExp("b")))));
+  auto astmt = A_AssignStm("a", A_OpExp(A_NumExp(5), A_plus, A_NumExp(3)));
+  auto print_stmt = A_PrintStm(A_PairExpList(
+      A_IdExp("a"),
+      A_LastExpList(A_OpExp(A_IdExp("a"), A_minus, A_NumExp(1)))));
+  auto multiply_stmt = A_OpExp(A_NumExp(10), A_times, A_IdExp("a"));
+  auto print_b_stmt = A_PrintStm(A_LastExpList(A_IdExp("b")));
+  auto b_assign_stmt = A_AssignStm("b", A_EseqExp(print_stmt, multiply_stmt));
+
+  return A_CompoundStm(astmt, A_CompoundStm(b_assign_stmt, print_b_stmt));
 }
 
 int maxStmPrintArgs(A_stm stm);
