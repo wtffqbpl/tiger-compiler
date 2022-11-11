@@ -3,7 +3,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 project(tiger-compiler)
 
 # Set Debug mode for this project.
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -16,8 +16,7 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_FLAGS "-std=c++2a")
+set(CMAKE_CXX_STANDARD 17)
 enable_testing()
 
 add_executable(tiger_compiler)
